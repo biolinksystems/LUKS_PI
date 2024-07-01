@@ -1,9 +1,5 @@
 #!/bin/sh -e
 
-# Copy resize2fs, fdisk, and other kernel modules into initramfs image.
-# https://github.com/Robpol86/robpol86.com/blob/master/docs/_static/resize2fs.sh
-# Save as (chmod +x): /etc/initramfs-tools/hooks/resize2fs
-
 COMPATIBILITY=true  # Set to false to skip copying other kernel's modules.
 
 PREREQ=""
@@ -25,8 +21,6 @@ copy_exec /sbin/fdisk /sbin
 copy_exec /usr/lib/aarch64-linux-gnu/libgcc_s.so.1 /usr/libaarch64-linux-gnu
 copy_exec /usr/lib/aarch64-linux-gnu/libthread.sp.0 /usr/lib/aarch64-linux-gnu 
 
-
-# Raspberry Pi 1 and 2+3 use different kernels. Include the other.
 if ${COMPATIBILITY}; then
   case "${version}" in
     *-v7+) other_version="$(echo ${version} |sed 's/-v7+$/+/')" ;;

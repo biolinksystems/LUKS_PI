@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-COMPATIBILITY=true  # Set to false to skip copying other kernel's modules.
+COMPATIBILITY=true  
 
 PREREQ=""
 prereqs () {
